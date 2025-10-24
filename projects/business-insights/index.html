@@ -1,0 +1,154 @@
+---
+layout: single
+classes: wide
+title: Business Insights
+toc: true
+toc_label: "On this page"
+toc_sticky: true
+author_profile: true
+---
+
+<div class="home">
+
+
+  <section>
+    <h2 id="Business Insights Dashboard">Introduction</h2>
+     <p>
+      This <b>Business Insights Dashboard</b> was designed with a business lens and simulates a real analytics pipeline — progressing from <a href="#ETL%20Process">raw data ingestion through transformation</a> to <a href="#Reporting">visualisation</a> in Power BI.
+
+     </p><p>It touches on <b>technical skills</b> (SQL, data modelling, Power BI development), <b>project delivery skills</b> (planning, documentation, reproducibility), and <b>stakeholder</b> focuses for clarity, usability, and business impact.</p>
+
+      <p>I used the publicly available <a href="https://www.kaggle.com/competitions/m5-forecasting-accuracy/data">Walmart M5 Forecasting – Accuracy</a> dataset, 
+        chosen for its realistic retail structure and multi-hierarchy forecasting challenges. I wanted to build a framework that makes it easy to pull meaningful 
+        conclusions from sales analysis, forecast performance, and data quality validation, as well as allowing myself to experiment with techniques such as statistical 
+        analysis in SQL and more data science-orientated approaches.
+    </p>
+</p>
+  </section>
+
+<section>
+  <h2 id="Business">Objectives</h2>
+<p>Alongside the technical build, I aimed to answer a few key questions a hiring manager or stakeholder might ask:
+<section id="faq">
+  <details>
+    <summary><b>What business problem does this solve, and why does it matter?</b></summary>
+    <p>Many analytics teams struggle with disconnected datasets, inconsistent logic, and slow analysis cycles.
+This project simulates how a structured data model can align sales, forecast, and data quality views all within a single process.</p>
+  </details>
+
+  <details>
+    <summary><b>What business value does this create?</b></summary>
+    <p>The result is a unified dataset that supports faster decision-making. For example, identifying underperforming product lines, quantifying forecast bias, or flagging data quality issues before they affect reporting.</p>
+  </details>
+
+
+
+
+</section>
+
+<section>
+  <h2 id="ETL Process Overview">ETL Process Overview</h2>
+  <p>
+    The ETL (Extract, Transform, Load) process ingests raw forecast and actual sales data, cleans and reshapes it, and prepares analytics-ready tables for reporting in Power BI.
+
+    The data pipeline follows a layered approach. More detail can be found in <cite><a href="etl-process.html">ETL Process.</a></cite>
+  </p>
+  <table style="width:100%; border-collapse:collapse; margin:2rem 0; font-family:system-ui, sans-serif;">
+  <thead style="background:#f8f9fa; text-align:left;">
+    <tr>
+      <th style="padding:0.75rem;">Stage</th>
+      <th style="padding:0.75rem;">Description</th>
+      <th style="padding:0.75rem;">Example Tools / Skills</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="padding:0.75rem; font-weight:600;">L0 – Raw Data (Extract)</td>
+      <td style="padding:0.75rem;">Ingest source files exactly as received to preserve data fidelity and enable auditing.</td>
+      <td style="padding:0.75rem;">SQL, DuckDB, Data Quality Checks</td>
+    </tr>
+    <tr>
+      <td style="padding:0.75rem; font-weight:600;">L1 – Standardized (Transform)</td>
+      <td style="padding:0.75rem;">Clean, reshape, and join data across tables for consistency and relational integrity.</td>
+      <td style="padding:0.75rem;">CTEs, Joins, Data Validation</td>
+    </tr>
+    <tr>
+      <td style="padding:0.75rem; font-weight:600;">L2 – Analytics-Ready (Load)</td>
+      <td style="padding:0.75rem;">Aggregate and calculate metrics such as MAPE and Bias for reporting layers.</td>
+      <td style="padding:0.75rem;">SQL Views, KPIs, Aggregations</td>
+    </tr>
+    <tr>
+      <td style="padding:0.75rem; font-weight:600;">Power BI Dashboard (Visualize)</td>
+      <td style="padding:0.75rem;">Deliver insights via interactive visuals designed for business decision-making.</td>
+      <td style="padding:0.75rem;">Power BI, DAX, Data Storytelling</td>
+    </tr>
+  </tbody>
+</table>
+
+
+
+
+
+</section>
+
+
+
+  <section>
+    <p>
+      <h2 id="Reporting">Reporting Overview</h2>
+      The Power BI dashboard was designed with distinct audiences in mind:
+      <ul>
+  <li>Executives</li>
+  <li>Analysts</li>
+  <li>Technicians</li>
+</ul>
+
+      The integration of these different worlds is what every business should be aiming for. As an analyst, I often found we spoke different languages as the reports 
+      were fundementally different, with top down and bottom up views, and used different datasets - translating between them left a lot to be desired. Here we can do both.</p>
+      
+<p>Using best practices (such as star schema with defined keys and one-to-many relationships) and 
+      storage using Parquet files (hosting an online SQL Server wasn’t within scope for this project), the results show that if managed properly, 
+      reporting 72m row datasets is not only possible, but for the end user, there isn't much of a performance impact (and not just something that only exists in a tech demo).
+       I go into insights and more detail in <cite><a href="https://github.com/jonnylgreenwood/Business-Insights/tree/main/reporting.html">Reporting.</a></cite>      </p>
+      <iframe title="Business Insights Power BI Report" width="100%" height="612" src="https://app.powerbi.com/view?r=eyJrIjoiODIwYTJlNzctNGQ0Yi00MTVlLTgyNmItNTI2OTNjODBkMWM2IiwidCI6IjczYTViZmNkLTE5OGMtNGE3MS05NjhiLWJiYTY5NGI1ZGM5ZSJ9" frameborder="0" allowFullScreen="true"></iframe>
+
+      <h3 id="Insights">Read More</h3>
+    </section>
+
+<section>
+
+<section>
+  <h2 id="Data Quality Testing">Data Quality Checks Overview
+  </h2><p>Each step of the process introduces risks, whether that's low quality inputs, a missed update, a transformation error and so on.
+    What's important is being able to identify these risks. Here, I've addressed the concerns I had: did my data make it through the pipeline without any errors being introduced?
+    I created a process mirroring Great Expectations (a DQ testing library), taking 'truths' from trusted inputs, and running a number of tests at each stage: the test type, truth source, layer, table, column, truth value and actual value.
+    I go into more detail in <cite><a href="https://github.com/jonnylgreenwood/Business-Insights/tree/main/data-quality-testing.html">Data Quality Testing.</a></cite>
+  </p>
+  <iframe title="m5_forecasting_accuracy_v3" width="100%" height="612" src="https://app.powerbi.com/view?r=eyJrIjoiODIwYTJlNzctNGQ0Yi00MTVlLTgyNmItNTI2OTNjODBkMWM2IiwidCI6IjczYTViZmNkLTE5OGMtNGE3MS05NjhiLWJiYTY5NGI1ZGM5ZSJ9&pageName=957c9b62935d1ea41601" frameborder="0" allowFullScreen="true"></iframe>
+</section>
+
+
+  <h2 id="Documentation & Reproducibility">Documentation & Reproducibility Overview
+  </h2>
+  <p>You're reading this in my GitHub repository (surprise!). For this project it also sits it's own GitHub repo</p>
+  <h3 id="Code">Code</h3>
+  <h3 id="Wiki">Wiki
+</section>
+<section>
+<h2 id="Skills & Tools">Skills & Tools Overview
+</h2>
+<h3 id="Software">Software</h3>
+<h3 id="Languages">Languages
+</h3>
+
+</section>
+
+<section>
+  <h2 id="hmm">
+    yes
+  </h2>
+</section>
+</section>
+
+
+
