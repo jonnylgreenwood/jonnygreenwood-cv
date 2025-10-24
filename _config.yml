@@ -5,11 +5,8 @@ baseurl: /portfolio-site
 
 
 plugins:
-  - jekyll-remote-theme
+  - jekyll-include-cache
 
-include:
-  - _layouts
-  - assets/css/style.css
 
 # Optional – tweak how URLs are handled
 markdown: kramdown
