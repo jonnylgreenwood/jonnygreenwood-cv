@@ -1,6 +1,8 @@
 title: "Jonny Greenwood | Data Portfolio"
 description: "Data Analytics | Forecasting | Power BI | SQL | Python"
 remote_theme: pages-themes/minimal@v0.2.0
+baseurl: /portfolio-site
+
 
 plugins:
   - jekyll-remote-theme
