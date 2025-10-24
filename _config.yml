@@ -7,6 +7,10 @@ baseurl: /portfolio-site
 plugins:
   - jekyll-remote-theme
 
+include:
+  - _layouts
+  - assets/css/style.css
+
 # Optional – tweak how URLs are handled
 markdown: kramdown
 highlighter: rouge

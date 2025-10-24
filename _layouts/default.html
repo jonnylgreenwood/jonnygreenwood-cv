@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ page.title }} | {{ site.title }}</title>
+
+    <!-- Minimal Theme CSS (still uses the remote theme styles) -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600">
+
+    {% if site.github %}
+      <link rel="stylesheet" href="{{ site.github.url }}/assets/css/style.css">
+    {% endif %}
+  </head>
+
+  <body>
+    <div class="wrapper">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <header>
+          <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+          <p>{{ site.description }}</p>
+        </header>
+      </aside>
+
+      <!-- Main content -->
+      <main class="main">
+        {{ content }}
+      </main>
+    </div>
+
+    <footer>
+      <hr>
+      <p>© {{ site.time | date: '%Y' }} {{ site.title }}</p>
+    </footer>
+  </body>
+</html>
