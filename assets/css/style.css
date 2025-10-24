@@ -1,0 +1,44 @@
+/* --- Custom layout tweaks for Minimal theme --- */
+
+/* Make sidebar narrower and push content left */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 2rem;
+}
+
+/* Sidebar (left panel with name/title) */
+.sidebar {
+  width: 220px; /* was ~300px by default */
+  flex-shrink: 0;
+}
+
+/* Main content */
+.main {
+  flex: 1;
+}
+
+/* Optional: make iframes responsive */
+iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16/9;
+  border: none;
+}
+
+/* Center page overall */
+body {
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Keep it nice on mobile */
+@media (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+  }
+  .sidebar {
+    width: 100%;
+  }
+}
