@@ -1,0 +1,25 @@
+# main links
+main:
+  - title: "Business Insights"
+    url: /projects/business-insights/
+    children:
+      - title: "Main"
+        url: /projects/business-insights/
+      - title: "ETL Process"
+        url: /projects/business-insights/etl-process/
+      - title: "Reporting"
+        url: /projects/business-insights/reporting/
+      - title: "Data Quality Checks"
+        url: /projects/business-insights/data-quality-checks/
+      - title: "Documentation"
+        url: /projects/business-insights/documentation/
+      - title: "Skills & Tools"
+        url: /projects/business-insights/skills-tools/
+  # - title: "About"
+  #   url: https://mmistakes.github.io/minimal-mistakes/about/
+  # - title: "Sample Posts"
+  #   url: /year-archive/
+  # - title: "Sample Collections"
+  #   url: /collection-archive/
+  - title: "About"
+    url: /about/main.html
