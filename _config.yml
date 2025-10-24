@@ -15,8 +15,8 @@ highlighter: rouge
 navigation:
   - title: Home
     url: /
-  - title: Projects
-    url: /projects
+  - title: Business Insights
+    url: /business-insights
   - title: About
     url: /about
   - title: Contact
