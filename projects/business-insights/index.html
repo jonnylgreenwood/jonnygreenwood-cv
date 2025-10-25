@@ -1,7 +1,7 @@
 ---
 layout: single
 classes: wide
-title: Business Insights
+title: Business Insights Project
 toc: true
 toc_label: "On this page"
 toc_sticky: true
@@ -12,153 +12,293 @@ author_profile: true
 
 
   <section>
-    <h2 id="Business Insights Dashboard">Introduction</h2>
-     <p>
-      This <b>Business Insights Dashboard</b> was designed with a business lens and simulates a real analytics pipeline — progressing from <a href="#ETL%20Process">raw data ingestion through transformation</a> to <a href="#Reporting">visualisation</a> in Power BI.
+    <h2 id="Introduction">Introduction</h2>
+    <p>
+      This <b>Business Insights Dashboard</b> was designed with a business focus and simulates a real analytics
+      pipeline. It's end to end: raw data ingestion through transformation to visualisation in Power BI. It's worth
+      noting that this is really two projects in one, and to achieve this it means stepping into a number of different roles: Data engineering,
+      Analytical Engineering, Data Analytics and Business Intelligence.
 
-     </p><p>It touches on <b>technical skills</b> (SQL, data modelling, Power BI development), <b>project delivery skills</b> (planning, documentation, reproducibility), and <b>stakeholder</b> focuses for clarity, usability, and business impact.</p>
-
-      <p>I used the publicly available <a href="https://www.kaggle.com/competitions/m5-forecasting-accuracy/data">Walmart M5 Forecasting – Accuracy</a> dataset, 
-        chosen for its realistic retail structure and multi-hierarchy forecasting challenges. I wanted to build a framework that makes it easy to pull meaningful 
-        conclusions from sales analysis, forecast performance, and data quality validation, as well as allowing myself to experiment with techniques such as statistical 
-        analysis in SQL and more data science-orientated approaches.
     </p>
-</p>
+    <p>It touches on <b>technical skills</b> (SQL, data modelling, Power BI development), <b>project delivery skills</b>
+      (planning, documentation, reproducibility), and <b>stakeholder</b> focuses for clarity, usability, and business
+      impact.</p>
+
+    <p>I used the publicly available <a href="https://www.kaggle.com/competitions/m5-forecasting-accuracy/data">Walmart
+        M5 Forecasting – Accuracy</a> dataset,
+      chosen for its realistic retail structure and multi-hierarchy challenges. I wanted to build a
+      framework that makes it easy to pull meaningful
+      conclusions from sales analysis, forecast performance, and data quality validation, as well as allowing myself to
+      experiment with new libraries and techniques.
+    </p>
+    </p>
   </section>
 
-<section>
-  <h2 id="Business">Objectives</h2>
-<p>Alongside the technical build, I aimed to answer a few key questions a hiring manager or stakeholder might ask:
-<section id="faq">
-  <details>
-    <summary><b>What business problem does this solve, and why does it matter?</b></summary>
-    <p>Many analytics teams struggle with disconnected datasets, inconsistent logic, and slow analysis cycles.
-This project simulates how a structured data model can align sales, forecast, and data quality views all within a single process.</p>
-  </details>
-
-  <details>
-    <summary><b>What business value does this create?</b></summary>
-    <p>The result is a unified dataset that supports faster decision-making. For example, identifying underperforming product lines, quantifying forecast bias, or flagging data quality issues before they affect reporting.</p>
-  </details>
-
-
-
-
-</section>
-
-<section>
-  <h2 id="ETL Process Overview">ETL Process Overview</h2>
-  <p>
-    The ETL (Extract, Transform, Load) process ingests raw forecast and actual sales data, cleans and reshapes it, and prepares analytics-ready tables for reporting in Power BI.
-
-    The data pipeline follows a layered approach. More detail can be found in <cite><a href="etl-process.html">ETL Process.</a></cite>
-  </p>
-  <table style="width:100%; border-collapse:collapse; margin:2rem 0; font-family:system-ui, sans-serif;">
-  <thead style="background:#f8f9fa; text-align:left;">
-    <tr>
-      <th style="padding:0.75rem;">Stage</th>
-      <th style="padding:0.75rem;">Description</th>
-      <th style="padding:0.75rem;">Example Tools / Skills</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td style="padding:0.75rem; font-weight:600;">L0 – Raw Data (Extract)</td>
-      <td style="padding:0.75rem;">Ingest source files exactly as received to preserve data fidelity and enable auditing.</td>
-      <td style="padding:0.75rem;">SQL, DuckDB, Data Quality Checks</td>
-    </tr>
-    <tr>
-      <td style="padding:0.75rem; font-weight:600;">L1 – Standardized (Transform)</td>
-      <td style="padding:0.75rem;">Clean, reshape, and join data across tables for consistency and relational integrity.</td>
-      <td style="padding:0.75rem;">CTEs, Joins, Data Validation</td>
-    </tr>
-    <tr>
-      <td style="padding:0.75rem; font-weight:600;">L2 – Analytics-Ready (Load)</td>
-      <td style="padding:0.75rem;">Aggregate and calculate metrics such as MAPE and Bias for reporting layers.</td>
-      <td style="padding:0.75rem;">SQL Views, KPIs, Aggregations</td>
-    </tr>
-    <tr>
-      <td style="padding:0.75rem; font-weight:600;">Power BI Dashboard (Visualize)</td>
-      <td style="padding:0.75rem;">Deliver insights via interactive visuals designed for business decision-making.</td>
-      <td style="padding:0.75rem;">Power BI, DAX, Data Storytelling</td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-
-</section>
-
-
-
   <section>
-    <p>
-      <h2 id="Reporting">Reporting Overview</h2>
-      The Power BI dashboard was designed with distinct audiences in mind:
-      <ul>
-  <li>Executives</li>
-  <li>Analysts</li>
-  <li>Technicians</li>
-</ul>
+    <h2 id="Objectives">Objectives</h2>
+    <p>Alongside the technical build, I aimed to answer a few key questions a hiring manager or stakeholder might ask:
+    <section id="faq">
+      <details>
+        <summary><b>What business problem does this solve, and why does it matter?</b></summary>
+        <p>Many analytics teams struggle with disconnected datasets, inconsistent logic, and slow analysis cycles.
+          This project simulates how a structured data model can align sales, forecast, and data quality views all
+          within a single process.</p>
+      </details>
 
-      The integration of these different worlds is what every business should be aiming for. As an analyst, I often found we spoke different languages as the reports 
-      were fundementally different, with top down and bottom up views, and used different datasets - translating between them left a lot to be desired. Here we can do both.</p>
-      
-<p>Using best practices (such as star schema with defined keys and one-to-many relationships) and 
-      storage using Parquet files (hosting an online SQL Server wasn’t within scope for this project), the results show that if managed properly, 
-      reporting 72m row datasets is not only possible, but for the end user, there isn't much of a performance impact (and not just something that only exists in a tech demo).
-       I go into insights and more detail in <cite><a href="https://github.com/jonnylgreenwood/Business-Insights/tree/main/reporting.html">Reporting.</a></cite>      </p>
-      <iframe title="Business Insights Power BI Report" width="100%" height="612" src="https://app.powerbi.com/view?r=eyJrIjoiODIwYTJlNzctNGQ0Yi00MTVlLTgyNmItNTI2OTNjODBkMWM2IiwidCI6IjczYTViZmNkLTE5OGMtNGE3MS05NjhiLWJiYTY5NGI1ZGM5ZSJ9" frameborder="0" allowFullScreen="true"></iframe>
+      <details>
+        <summary><b>What business value does this create?</b></summary>
+        <p>The result is a unified dataset that supports faster decision-making. For example, identifying
+          underperforming product lines, quantifying forecast bias, or flagging data quality issues before they affect
+          reporting.</p>
+      </details>
+
+
+
+
     </section>
 
-<section>
+    <section>
+      <h2 id="Process Overview">Process Overview</h2>
+      <p>
+        The ETL (Extract, Transform, Load) process ingests raw data such as sales and product information, cleans and
+        reshapes it. This creates analytics-ready tables, which are then used in things such as reporting in Power BI, what-if scenario modelling, and
+        data quality testing.
 
-<section>
-  <h2 id="Data Quality Testing">Data Quality Checks Overview
-  </h2><p>Each step of the process introduces risks, whether that's low quality inputs, a missed update, a transformation error and so on.
-    What's important is being able to identify these risks. Here, I've addressed the concerns I had: did my data make it through the pipeline without any errors being introduced?
-    I created a process mirroring Great Expectations (a DQ testing library), taking 'truths' from trusted inputs, and running a number of tests at each stage: the test type, truth source, layer, table, column, truth value and actual value.
-    I go into more detail in <cite><a href="https://github.com/jonnylgreenwood/Business-Insights/tree/main/data-quality-testing.html">Data Quality Testing.</a></cite>
-  </p>
-  <iframe title="m5_forecasting_accuracy_v3" width="100%" height="612" src="https://app.powerbi.com/view?r=eyJrIjoiODIwYTJlNzctNGQ0Yi00MTVlLTgyNmItNTI2OTNjODBkMWM2IiwidCI6IjczYTViZmNkLTE5OGMtNGE3MS05NjhiLWJiYTY5NGI1ZGM5ZSJ9&pageName=957c9b62935d1ea41601" frameborder="0" allowFullScreen="true"></iframe>
-</section>
-
-
-  <h2 id="Documentation & Reproducibility">Documentation & Reproducibility Overview
-  </h2>
-    <a href="https://github.com/jonnylgreenwood/Business-Insights"><h3 id="GitHub Code">GitHub Code</h3></a>
-  <p>This project was loaded in a GitHub repo from initial conceptin, so the whole process is traceable and viewable from start to finish.
-    With relative ease this whole project can be replicated by another user.
-  </p>
-  <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki"><h3 id="Documentation">Documentation</h3></a>
-  <p>Documentation is hosted on GitHub wikis and written in markdown. It consists of:
-    <ul>
-  <li>Files and descriptions, IE what their purpose is.</li>
-  <li>How to run the process.</li>
-  <li>Auto-generated pages such as database profiles. I found this particulary useful for writing queries.</li>
-</ul>
-
-  </p>
-  <a href="https://github.com/users/jonnylgreenwood/projects/2"><h3 id="Project Management">Project Management</a>
-  </h3> Each key action was setup as an issue in the project's GitHub project page, meaning I approached each part in a structured way
-  <p>
-
-  </p>
-</section>
-<section>
-<h2 id="Skills & Tools">Skills & Tools Overview
-</h2>
-<h3 id="Software">Software</h3>
-<h3 id="Languages">Languages
-</h3>
-<p>SQL – CTEs, JOINs, UNPIVOT, window functions, temp tables, views, aggregates, CASE logic, etc.
-Python – pandas, numpy, duckdb, pyarrow, fastparquet, pathlib
-Power BI – DAX, M-code, service integration
-Alteryx, Excel, Statistical Analysis</p>
-
-</section>
+        The data pipeline follows a layered approach (L0 -> L1 -> L2 -> Reporting) & Data Quality Tests.
+      </p>
+      <table style="width:100%; border-collapse:collapse; margin:2rem 0; font-family:system-ui, sans-serif;">
+        <thead style="background:#f8f9fa; text-align:left;">
+          <tr>
+            <th style="padding:0.75rem;">Stage</th>
+            <th style="padding:0.75rem;">Description</th>
+            <th style="padding:0.75rem;">Example Tools / Skills</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding:0.75rem; font-weight:600;">L0 – Raw Data<br>
+              <small>
+                <a href="https://github.com/jonnylgreenwood/Business-Insights/tree/main/SQL/01_Setup_Database"
+                  target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                    width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                  Code ↗<br>
+                  <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/Process-Documentation#01_setup_database"
+                    target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                      width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                    Docs ↗<br>
+                    <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/L0_business_insights"
+                      target="_blank" rel="noopener noreferrer">
+                      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                        width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                      DB Profile ↗</small>
+            </td>
 
 
+            <td style="padding:0.75rem;">Ingest source files exactly as received to preserve data fidelity and enable
+              auditing.</td>
+            <td style="padding:0.75rem;">SQL, DuckDB, Data Quality Checks</td>
+            </a>
 
+            </a>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem; font-weight:600;">L1 – Standardized<br>
+              <small>
+                <a href="https://github.com/jonnylgreenwood/Business-Insights/tree/main/SQL/02_L1" target="_blank"
+                  rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                    width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                  Code ↗<br>
+                  <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/Process-Documentation#01_setup_database"
+                    target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                      width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                    Docs ↗<br>
+                    <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/L1_business_insights"
+                      target="_blank" rel="noopener noreferrer">
+                      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                        width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                      DB Profile ↗</small>
+
+
+            </td>
+
+            <td style="padding:0.75rem;">Clean, reshape, and join data across tables for consistency and relational
+              integrity.</td>
+            <td style="padding:0.75rem;">CTEs, Joins, Data Validation</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem; font-weight:600;">L2 – Analytics-Ready<br>
+              <small>
+                <a href="https://github.com/jonnylgreenwood/Business-Insights/tree/main/SQL/04_L2" target="_blank"
+                  rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                    width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                  Code 1 ↗<br>
+                  <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/Process-Documentation#01_setup_database"
+                    target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                      width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                    Docs 1 ↗<br>
+                    <a href="https://github.com/jonnylgreenwood/Business-Insights/tree/main/SQL/05_Enrichment"
+                      target="_blank" rel="noopener noreferrer">
+                      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                        width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                      Code 2 ↗<br>
+                      <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/Process-Documentation#01_setup_database"
+                        target="_blank" rel="noopener noreferrer">
+                        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                          width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                        Docs 2 ↗<br>
+                        <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/L2_business_insights"
+                          target="_blank" rel="noopener noreferrer">
+                          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                            width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                          DB Profile ↗</small>
+
+            </td>
+            <td style="padding:0.75rem;">Aggregate and calculate metrics such as MAPE and Bias for reporting layers.
+            </td>
+            <td style="padding:0.75rem;">SQL Views, KPIs, Aggregations</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem; font-weight:600;">Reporting<br>
+              <small>
+                <a href="https://github.com/jonnylgreenwood/Business-Insights/tree/main/SQL/06_L2_to_pbi"
+                  target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                    width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                  Code ↗<br>
+                  <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/Power-BI-Documentation"
+                    target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                      width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                    Docs ↗<br>
+                    <a href="insights.html" rel="noopener noreferrer">
+                      <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/powerbi.svg" alt="Power BI"
+                        width="18" height="18" style="vertical-align:middle; margin-right:4px;">
+                      Insights</small>
+            </td>
+            <td style="padding:0.75rem;">Deliver insights via interactive visuals designed for business decision-making,
+              & modelling (EG scenario planning, KPIs, forecasting).
+            </td>
+            <td style="padding:0.75rem;">Power BI, DAX, Data Storytelling</td>
+          </tr>
+          <tr>
+            <td style="padding:0.75rem; font-weight:600;">Data Quality Tests<br>
+              <small>
+                <a href="https://github.com/jonnylgreenwood/Business-Insights/tree/main/SQL/98_dq_checks"
+                  target="_blank" rel="noopener noreferrer">
+                  <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                    width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                  Code ↗<br>
+                  <a href="https://github.com/jonnylgreenwood/Business-Insights/wiki/Process-Documentation#98_dq_checks"
+                    target="_blank" rel="noopener noreferrer">
+                    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub"
+                      width="20" height="20" style="vertical-align:middle; margin-right:4px;">
+                    Docs ↗</small>
+            </td>
+            <td style="padding:0.75rem;">Each Level is tested and validated against known 'truth' values to ensure data
+              integrity is maintained.
+            </td>
+            <td style="padding:0.75rem;">Tests can be counting rows, distinct values, nulls, dtypes, column naming,
+              sums, min, max at a truth source, layer, table, column, truth value and actual value level</td>
+          </tr>
+        </tbody>
+      </table>
+
+
+
+
+
+    </section>
+
+
+
+    <section>
+      <p>
+      <h2 id="Insights">Insights</h2>
+      The Power BI dashboard was designed around three key audiences (Executive, Analyst, and Technical) each with
+      distinct needs and perspectives.</p>
+      <p>
+        Bridging these viewpoints is what every business should strive for. In practice, analysts often find themselves
+        translating between “top-down” executive summaries and “bottom-up” operational reports built on separate
+        datasets. This project demonstrates how both worlds can coexist within a unified, transparent data model.
+
+      </p>
+
+      <p>Built with best practices in mind (E.G. star schema with defined keys and one-to-many relationships), and data
+        stored in Parquet format (since hosting an online SQL Server was outside the project’s scope), the resulting
+        dashboard (~72 million rows) still performs really efficiently, delivering a
+        seamless experience for end users.</p>
+      <p>
+        More detail can be found in <a href="insights.html" rel="noopener noreferrer">
+          <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/powerbi.svg" alt="Power BI" width="18"
+            height="18" style="vertical-align:middle; margin-right:4px;">
+          Insights</small></a>
+      </p>
+    </section>
+
+    <section>
+
+      <section>
+        <h2 id="Data Quality Testing">Data Quality Checks Overview
+        </h2>
+        <p>This step is to ensure the data can be trusted, and that missed updates,
+          transformation errors etc are proactively idenfied before moving on to the next stage.
+          I created a process mirroring Great Expectations (a DQ testing library), taking 'truths' from trusted inputs,
+          and running a number of tests at each stage: the test type, truth source, layer, table, column, truth value
+          and actual value.
+        </p>
+        <iframe title="m5_forecasting_accuracy_v3" width="100%" height="612"
+          src="https://app.powerbi.com/view?r=eyJrIjoiODIwYTJlNzctNGQ0Yi00MTVlLTgyNmItNTI2OTNjODBkMWM2IiwidCI6IjczYTViZmNkLTE5OGMtNGE3MS05NjhiLWJiYTY5NGI1ZGM5ZSJ9&pageName=957c9b62935d1ea41601"
+          frameborder="0" allowFullScreen="true"></iframe>
+      </section>
+
+
+      <h2 id="Documentation & Reproducibility">Documentation & Reproducibility
+      </h2>
+      <h3 id="GitHub Code">GitHub Code</h3>
+      <p>The GitHub repository keeps all project files version-controlled and traceable from start to finish. It ensures
+        transparency, reproducibility, and business continuity, allowing others to review, replicate, or build upon the
+        work with ease. <a href="https://github.com/jonnylgreenwood/Business-Insights" target="_blank"
+          rel="noopener noreferrer">GitHub Code ↗</a>
+
+      </p>
+      <h3 id="Documentation">Documentation</h3>
+      <p>Documentation is hosted on GitHub and written in markdown. <a
+          href="https://github.com/jonnylgreenwood/Business-Insights/wiki" target="_blank"
+          rel="noopener noreferrer">GitHub Wiki ↗</a></p>
+      <p>Contents include:</p>
+      <ul>
+        <li>Files and descriptions, IE what their purpose is.</li>
+        <li>How to run the process.</li>
+        <li>Auto-generated pages such as database profiles. I found this particulary useful when writing queries.</li>
+      </ul>
+
+      </p>
+      <h3 id="Project Management">Project Management
+      </h3> Each key action was tracked as an issue within the project’s GitHub board, providing a structured,
+      transparent way to plan, prioritize, and monitor progress throughout development. <a
+        href="https://github.com/users/jonnylgreenwood/projects/2" target="_blank" rel="noopener noreferrer">GitHub
+        Project ↗</a></p>
+      <p>
+
+      </p>
+    </section>
+    <section>
+      <h2 id="Skills & Tools">Skills & Tools Overview</h2>
+      <p>
+      <ul>
+        <li><strong>SQL</strong> – CTEs, JOINs, UNPIVOT, window functions, temp tables, views, aggregates, CASE logic,
+          etc.</li>
+        <li><strong>Python</strong> – pandas, numpy, duckdb, pyarrow, fastparquet, pathlib</li>
+        <li><strong>Power BI</strong> – DAX, M-code, service integration</li>
+        <!-- <li><strong>Alteryx, Excel</strong> – Statistical analysis and data transformation</li> -->
+      </ul>
+      </p>
+
+    </section>
