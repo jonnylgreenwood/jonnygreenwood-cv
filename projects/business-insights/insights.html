@@ -1,0 +1,139 @@
+---
+layout: single
+classes: wide
+title: Insights
+toc: true
+toc_label: "On this page"
+toc_sticky: true
+author_profile: true
+---
+
+<div class="home">
+    <nav aria-label="breadcrumb" style="font-size: 0.9em; margin-bottom: 1rem;">
+        <a href="/" style="text-decoration:none; color:inherit; opacity:0.8;">Home</a> ›
+        <!-- <a href="/Business Insights Project" style="text-decoration:none; color:inherit; opacity:0.8;">Projects</a> › -->
+        <a href="/projects/business-insights" style="text-decoration:none; color:inherit; opacity:0.8;">Business
+            Insights Project</a> ›
+        <span style="opacity:0.6;">Insights</span>
+    </nav>
+
+    <section>
+        <h2 id="Introduction">Introduction</h2>
+        <p>
+            This page is the bridge between data and insights.
+        </p>
+        </p>
+    </section>
+    <!--  -->
+    <section>
+        <h2 id="Model">Model</h2>
+        <p>
+            The data model follows a <strong>star schema</strong> structure — using keys and one-to-many relationships
+            between
+            fact and dimension tables. The only exception is the <code>calendar_periods</code> table, which allows
+            overlapping
+            periods (e.g., Rolling 3M and Rolling 6M). This design introduces minimal performance impact while enabling
+            the fact table (<code>l2_sales_long_extended</code>) to aggregate correctly without needing data
+            duplication.
+        </p>
+
+        <p>
+            A dedicated <code>_measures</code> table groups all calculated measures into clear folders for easier
+            navigation.
+            Key columns are hidden, and while additional columns could be removed for optimization, they remain in the
+            model
+            to support ongoing development and testing.
+        </p>
+        <p>
+
+        </p> <a href="assests/images/model_view.png" target="_blank">
+            <img src="assests/images/model_view.png" alt="Preview" style="width:100%; height:auto; border-radius:8px;">
+        </a>
+        </p>
+        <p>
+            There are also best practices to follow when creating DAX measures. Using <code>ASP YoY%</code> as an
+            example:
+        <ul>
+            <li><code>VAR</code> improves readability and avoids recalculating the same expression multiple times.</li>
+            <li><code>DATEADD</code> leverages time-intelligence functions for easy period comparisons.</li>
+            <li><code>DIVIDE</code> safely handles division by zero, unlike the standard <code>/</code> operator.</li>
+        </ul>
+        </p>
+        <section>
+            <pre><code><small>
+ASP YoY% =
+VAR PrevYear =
+    CALCULATE([Average Selling Price], DATEADD('dim_calendar'[Date], -1, YEAR))
+RETURN
+    DIVIDE([Average Selling Price] - PrevYear, PrevYear)
+</small></code></pre>
+        </section>
+    </section>
+    <!--  -->
+    <section>
+        <h2 id="Exec Insights">Exec Insights</h2>
+        <p>
+            The Executive View highlights key performance metrics and trends at a glance. Think, what's the story,
+            what're the key takeaways. It's designed for stakeholders who
+            need a
+            high-level overview of sales, profitability, and product mix without navigating detailed reports.
+        </p>
+
+        <p>
+            <iframe title="m5_forecasting_accuracy_v3" width="100%" height="600"
+                src="https://app.powerbi.com/view?r=eyJrIjoiODIwYTJlNzctNGQ0Yi00MTVlLTgyNmItNTI2OTNjODBkMWM2IiwidCI6IjczYTViZmNkLTE5OGMtNGE3MS05NjhiLWJiYTY5NGI1ZGM5ZSJ9&pageName=1d97b2d6b9b7dae48810"
+                frameborder="0" allowFullScreen="true"></iframe>
+        </p>
+        <p>
+            From a first glance, we can identify our largest stores and top-performing categories across
+            approximately 3,000 products. Total sales continue to grow year-on-year, although the rate of growth
+            is slowing — suggesting market maturity or pricing stabilization.
+        </p>
+
+        <p>
+            A natural next question for leadership might be:
+        </p>
+
+        <ul>
+            <li>How much of our growth is driven by <strong>volume</strong> versus increases in <strong>average selling
+                    price (ASP)</strong>?</li>
+        </ul>
+
+    </section>
+    <!--  -->
+    <!--  -->
+    <section>
+        <h2 id="Analyst Insights">Analyst Insights</h2>
+        <p>
+            The Analyst View focuses on identifying emerging patterns and exploring what’s driving performance changes
+            in the data.
+            It’s designed for stakeholders who want to dig one level deeper and translate findings into action.
+        </p>
+
+        <p>
+            <iframe title="m5_forecasting_accuracy_v3" width="100%" height="600"
+                src="https://app.powerbi.com/view?r=eyJrIjoiODIwYTJlNzctNGQ0Yi00MTVlLTgyNmItNTI2OTNjODBkMWM2IiwidCI6IjczYTViZmNkLTE5OGMtNGE3MS05NjhiLWJiYTY5NGI1ZGM5ZSJ9&pageName=85777bd2499e52297334"
+                frameborder="0" allowFullScreen="true"></iframe>
+        </p>
+        <p>
+            From a first glance, we can see that Current Year <code>CA_2</code> sales are <strong>81% above
+                forecast</strong>. While
+            strong performance is positive,
+            it also increases the risk of supply not meeting demand. Selecting <code>CA_2</code> in the top-center
+            visual reveals that
+            <code>FOODS_2</code> has a target performance of 408%, though their
+            weighting also needs to be understood.
+        </p>
+
+        <p>
+            A natural next question for an analyst might be:
+        </p>
+        <ul>
+            <li>Is this driven by increased sales, or poor forecast quality, or both? You can see for yourself by
+                filtering in the top right <code>(store_id="CA_2", dept_id="FOODS_2", year="2015, 2016, 2017")</code>
+            </li>
+            <li>Can the store provide more context — for example, a local market change?</li>
+            <li>How should the forecast model be adjusted going forward?</li>
+        </ul>
+    </section>
+    <!--  -->
