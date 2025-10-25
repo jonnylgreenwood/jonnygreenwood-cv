@@ -1,7 +1,7 @@
 # main links
 main:
   - title: "Business Insights"
-    url: /projects/business-insights/
+    url: projects/business-insights/
     children:
       - title: "Main"
         url: /projects/business-insights/
@@ -22,4 +22,4 @@ main:
   # - title: "Sample Collections"
   #   url: /collection-archive/
   - title: "About"
-    url: /about/
+    url: about/
