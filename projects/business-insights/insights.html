@@ -26,7 +26,8 @@ author_profile: true
     </section>
     <!--  -->
     <section>
-        <h2 id="Model">Model</h2>
+        <h2 id="Report Setup">Report Setup</h2>
+            <h3 id="Modelling">Modelling</h2>
         <p>
             The data model follows a <strong>star schema</strong> structure — using keys and one-to-many relationships
             between
@@ -51,6 +52,7 @@ author_profile: true
         </a>
         </p>
         <p>
+            <h3 id="DAX">DAX</h3>
             There are also best practices to follow when creating DAX measures. Using <code>ASP YoY%</code> as an
             example:
         <ul>
@@ -95,8 +97,16 @@ RETURN
         </p>
 
         <ul>
-            <li>How much of our growth is driven by <strong>volume</strong> versus increases in <strong>average selling
+            <li>Q: How much of our growth is driven by <strong>volume</strong> versus increases in <strong>average selling
                     price (ASP)</strong>?</li>
+            <li><details>
+        <summary>A: Overall, it shifts from volume to ASP growth, and we can see the YoY% growth differences in Product Sales Overview (bottom right). Note that it varies by year, and department. <section id="faq"></summary>
+
+            <iframe title="m5_forecasting_accuracy_v3" width="100%" height="600"
+                src="https://app.powerbi.com/view?r=eyJrIjoiODIwYTJlNzctNGQ0Yi00MTVlLTgyNmItNTI2OTNjODBkMWM2IiwidCI6IjczYTViZmNkLTE5OGMtNGE3MS05NjhiLWJiYTY5NGI1ZGM5ZSJ9&pageName=475c56627d63500707d0"
+                frameborder="0" allowFullScreen="true"></iframe>
+      </details></li>
+            
         </ul>
 
     </section>
