@@ -1,6 +1,7 @@
 title: "Jonny Greenwood | Data Portfolio"
 description: "Data Analytics • Forecasting • Power BI • SQL • Python"
-url: "https://jonnylgreenwood.github.io/portfolio-site"
+url: "https://jonnylgreenwood.github.io"
+baseurl: "/portfolio-site"
 # logo: /assests/images/siteicon/android-chrome-512x512.png
 # favicon: /assests/images/siteicon/android-chrome-512x512.png
 
