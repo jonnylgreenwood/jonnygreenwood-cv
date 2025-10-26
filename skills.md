@@ -39,10 +39,10 @@ Please note this page is regulary updated.
 
 | Library / Concept | Description / Use Case | Evidence |
 |---|---|---|
-| **pandas** | Data manipulation and cleaning (eg filtering, joins, aggregations, reshaping) | [034_profile_parquets.py](https://github.com/jonnylgreenwood/Business-Insights/blob/main/SQL/06_L2_to_pbi/034_profile_parquets.py)|
+| **pandas** | Data manipulation and cleaning (eg filtering, joins, aggregations, reshaping) | [sales_join.py](https://github.com/jonnylgreenwood/Business-Insights/blob/main/Python/sales_join.py)|
 | **pyarrow** | Efficient data interchange and Parquet file handling | [033_split_parquet.py](https://github.com/jonnylgreenwood/Business-Insights/blob/main/SQL/06_L2_to_pbi/033_split_parquet.py)|
 | **duckdb** | SQL querying within Python; fast analytics on Parquet files | [01_create_L0_db.py](https://github.com/jonnylgreenwood/Business-Insights/blob/main/SQL/01_Setup_Database/01_create_L0_db.py)|
-| **os / pathlib** | File and folder management for automated ETL scripts | []()|
+| **os / pathlib** | File and folder management for automated ETL scripts | [sales_join.py](https://github.com/jonnylgreenwood/Business-Insights/blob/main/Python/sales_join.py)|
 | **Jupyter / VS Code notebooks** | Interactive analysis, documentation, and rapid prototyping | [schema_columns.ipynb](https://github.com/jonnylgreenwood/Business-Insights/blob/main/Python/schema_columns.ipynb)|
 | **Data visualization** | Quick checks using `matplotlib` / `plotly` | []()|
 | **Basic Python syntax** | Loops, conditionals, list comprehensions, functions | [034_profile_parquets.py](https://github.com/jonnylgreenwood/Business-Insights/blob/main/SQL/06_L2_to_pbi/034_profile_parquets.py)|
@@ -52,7 +52,24 @@ Please note this page is regulary updated.
 
 ## DAX
 
-[Business Insights](https://github.com/jonnylgreenwood/Business-Insights/blob/main/Power%20Bi/dax/measures.dax)
+[Examples taken from Business Insights Project](https://github.com/jonnylgreenwood/Business-Insights/blob/main/Power%20Bi/dax/measures.dax)
+
+### Power BI / DAX Concepts
+
+| Concept | Description | Examples from my Portfolio |
+|----------|--------------|-----------------------------|
+| **Aggregation & Iterators** | Using functions like `SUM`, `AVERAGEX`, and `STDEVX.P` to calculate totals, averages, and statistical metrics across dynamic contexts. | `AVERAGEX(ALL(dim_calendar[wm_yr_wk]), CALCULATE([Total Sales]))` |
+| **Statistical Analysis** | Implementing measures for Z-Score, Coefficient of Variation, and standard deviation to identify performance outliers and variability. | `DIVIDE([Total Sales] - [Daily Sales Mean (AllSelected)], [Daily Sales StdDev (AllSelected)])` |
+| **Time Intelligence** | Applying functions like `CALCULATE`, `DATEADD`, and `ALLSELECTED` to calculate YoY changes, rolling metrics, and trend comparisons. | `VAR PrevYear = CALCULATE([Total Sales], DATEADD('dim_calendar'[Date], -1, YEAR))` |
+| **Forecast Accuracy Metrics** | Evaluating model performance using MAPE, Bias, and Bias % across multiple forecast models (Naïve, Drift, Rolling). | `DIVIDE(ABS([Forecast Sales (SNaive)] - [Total Sales]), [Total Sales])` |
+| **Dynamic UX Measures** | Creating contextual and narrative-style outputs with `CONCATENATEX`, `IF`, and `FORMAT` for clear, dynamic storytelling in dashboards. | `"Sales to Target: " & CONCATENATEX(VALUES('Calendar Periods'[Period]), 'Calendar Periods'[Period], ", ")` |
+| **Context Management** | Leveraging `ALL`, `FILTER`, and `VAR` to control filter context, compare subsets, and isolate time periods or product groups. | `CALCULATE([Total Sales], ALL(dim_product))` |
+| **Comparative & Ratio Analysis** | Using `DIVIDE` and `ALL` to calculate contribution, growth, and ratio-based KPIs like Sales Share % or Sales vs Target. | `DIVIDE([Total Sales], CALCULATE([Total Sales], ALL(dim_product)))` |
+| **Ranking & Highlights** | Employing `TOPN` and `RANKX` to identify top-performing stores, products, or high-variability entities. | `TOPN(10, dim_store, [Sales CoV], DESC)` |
+| **Helper & Validation Measures** | Adding checks such as row counts, last data points, or selected-period summaries for QA and transparency. | `CALCULATE(MAX(dim_calendar[Date]), FILTER(l2_sales_long_extended, l2_sales_long_extended[sales] > 0))` |
+| **Formatting & Readability** | Applying conditional icons, numeric and text formatting (`FORMAT`, currency strings) for better interpretation and presentation. | `FORMAT([Total Sales], "$0.0,,,M") & IF([Sales $ YoY%] >= 0, " ▲", " ▼")` |
+
+
 
 Variables, time intelligence, x and other functions.
 
