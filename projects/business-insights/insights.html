@@ -24,53 +24,7 @@ author_profile: true
         </p>
         </p>
     </section>
-    <!--  -->
-    <section>
-        <h2 id="Report Setup">Report Setup</h2>
-            <h3 id="Modelling">Modelling</h2>
-        <p>
-            The data model follows a <strong>star schema</strong> structure — using keys and one-to-many relationships
-            between
-            fact and dimension tables. The only exception is the <code>calendar_periods</code> table, which allows
-            overlapping
-            periods (e.g., Rolling 3M and Rolling 6M). This design introduces minimal performance impact while enabling
-            the fact table (<code>l2_sales_long_extended</code>) to aggregate correctly without needing data
-            duplication.
-        </p>
 
-        <p>
-            A dedicated <code>_measures</code> table groups all calculated measures into clear folders for easier
-            navigation.
-            Key columns are hidden, and while additional columns could be removed for optimization, they remain in the
-            model
-            to support ongoing development and testing.
-        </p>
-        <p>
-
-        </p> <a href="assests/images/model_view.png" target="_blank">
-            <img src="assests/images/model_view.png" alt="Preview" style="width:100%; height:auto; border-radius:8px;">
-        </a>
-        </p>
-        <p>
-            <h3 id="DAX">DAX</h3>
-            There are also best practices to follow when creating DAX measures. Using <code>ASP YoY%</code> as an
-            example:
-        <ul>
-            <li><code>VAR</code> improves readability and avoids recalculating the same expression multiple times.</li>
-            <li><code>DATEADD</code> leverages time-intelligence functions for easy period comparisons.</li>
-            <li><code>DIVIDE</code> safely handles division by zero, unlike the standard <code>/</code> operator.</li>
-        </ul>
-        </p>
-        <section>
-            <pre><code><small>
-ASP YoY% =
-VAR PrevYear =
-    CALCULATE([Average Selling Price], DATEADD('dim_calendar'[Date], -1, YEAR))
-RETURN
-    DIVIDE([Average Selling Price] - PrevYear, PrevYear)
-</small></code></pre>
-        </section>
-    </section>
     <!--  -->
     <section>
         <h2 id="Exec Insights">Exec Insights</h2>
@@ -147,3 +101,51 @@ RETURN
         </ul>
     </section>
     <!--  -->
+
+    <!--  -->
+    <section>
+        <h2 id="Report Setup">Report Setup</h2>
+            <h3 id="Modelling">Modelling</h2>
+        <p>
+            The data model follows a <strong>star schema</strong> structure — using keys and one-to-many relationships
+            between
+            fact and dimension tables. The only exception is the <code>calendar_periods</code> table, which allows
+            overlapping
+            periods (e.g., Rolling 3M and Rolling 6M). This design introduces minimal performance impact while enabling
+            the fact table (<code>l2_sales_long_extended</code>) to aggregate correctly without needing data
+            duplication.
+        </p>
+
+        <p>
+            A dedicated <code>_measures</code> table groups all calculated measures into clear folders for easier
+            navigation.
+            Key columns are hidden, and while additional columns could be removed for optimization, they remain in the
+            model
+            to support ongoing development and testing.
+        </p>
+        <p>
+
+        </p> <a href="assests/images/model_view.png" target="_blank">
+            <img src="assests/images/model_view.png" alt="Preview" style="width:100%; height:auto; border-radius:8px;">
+        </a>
+        </p>
+        <p>
+            <h3 id="DAX">DAX</h3>
+            There are also best practices to follow when creating DAX measures. Using <code>ASP YoY%</code> as an
+            example:
+        <ul>
+            <li><code>VAR</code> improves readability and avoids recalculating the same expression multiple times.</li>
+            <li><code>DATEADD</code> leverages time-intelligence functions for easy period comparisons.</li>
+            <li><code>DIVIDE</code> safely handles division by zero, unlike the standard <code>/</code> operator.</li>
+        </ul>
+        </p>
+        <section>
+            <pre><code><small>
+ASP YoY% =
+VAR PrevYear =
+    CALCULATE([Average Selling Price], DATEADD('dim_calendar'[Date], -1, YEAR))
+RETURN
+    DIVIDE([Average Selling Price] - PrevYear, PrevYear)
+</small></code></pre>
+        </section>
+    </section>
