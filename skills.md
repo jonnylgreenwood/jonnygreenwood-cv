@@ -54,7 +54,6 @@ Please note this page is regulary updated.
 
 [Examples taken from Business Insights Project](https://github.com/jonnylgreenwood/Business-Insights/blob/main/Power%20Bi/dax/measures.dax)
 
-### Power BI / DAX Concepts
 
 | Concept | Description | Examples from my Portfolio |
 |----------|--------------|-----------------------------|
