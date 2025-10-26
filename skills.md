@@ -37,7 +37,7 @@ Please note this page is regulary updated.
 
 ## Python
 
-| Library / Concept | Description / Use Case | Evidence |
+| Library / Concept | Description / Use Case | Examples from my Portfolio |
 |---|---|---|
 | **pandas** | Data manipulation and cleaning (eg filtering, joins, aggregations, reshaping) | [sales_join.py](https://github.com/jonnylgreenwood/Business-Insights/blob/main/Python/sales_join.py)|
 | **pyarrow** | Efficient data interchange and Parquet file handling | [033_split_parquet.py](https://github.com/jonnylgreenwood/Business-Insights/blob/main/SQL/06_L2_to_pbi/033_split_parquet.py)|
