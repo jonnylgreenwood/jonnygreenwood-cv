@@ -2,8 +2,8 @@ title: "Jonny Greenwood | Data Portfolio"
 description: "Data Analytics • Forecasting • Power BI • SQL • Python"
 url: "https://jonnylgreenwood.github.io"
 baseurl: "/portfolio-site"
-# logo: /assests/images/siteicon/android-chrome-512x512.png
-# favicon: /assests/images/siteicon/android-chrome-512x512.png
+logo: /assets/images/siteicon/android-chrome-512x512.png
+favicon: /assets/images/siteicon/android-chrome-512x512.png
 
 # Minimal Mistakes theme
 remote_theme: "mmistakes/minimal-mistakes@4.27.3"
@@ -31,7 +31,7 @@ sass:
 
 author:
   name: "Jonny Greenwood"
-  avatar: ""   # or leave blank if not ready
+  avatar: "assets/images/profile.jpeg"   # or leave blank if not ready
   bio: "Another data analyst and travelling photographer."
   location: "Leeds, UK"
   links:
@@ -41,6 +41,9 @@ author:
     - label: "LinkedIn"
       icon: "fab fa-linkedin"
       url: "https://www.linkedin.com/in/jonathanlgreenwood/"
+    - label: "CV"
+      icon: "fas fa-file-pdf"
+      url: "https://nbviewer.org/github/jonnylgreenwood/portfolio-site/blob/main/cv/curr.pdf"
     - label: "Linktr.ee"
       icon: "fas fa-globe"
       url: "https://linktr.ee/greenwoodanalytics"
