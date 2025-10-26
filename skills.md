@@ -69,10 +69,6 @@ Please note this page is regulary updated.
 | **Helper & Validation Measures** | Adding checks such as row counts, last data points, or selected-period summaries for QA and transparency. | `CALCULATE(MAX(dim_calendar[Date]), FILTER(l2_sales_long_extended, l2_sales_long_extended[sales] > 0))` |
 | **Formatting & Readability** | Applying conditional icons, numeric and text formatting (`FORMAT`, currency strings) for better interpretation and presentation. | `FORMAT([Total Sales], "$0.0,,,M") & IF([Sales $ YoY%] >= 0, " ▲", " ▼")` |
 
-
-
-Variables, time intelligence, x and other functions.
-
 ## Power Query M formula language
 
 [Business Insights](https://github.com/jonnylgreenwood/Business-Insights/blob/main/Power%20Bi/m_code/read_parquets.m)
